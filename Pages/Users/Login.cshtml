@@ -1,0 +1,45 @@
+@page
+@model Lib.Pages.Users.Login
+@using Microsoft.AspNetCore.Http
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+@if(Model.errorMessage.Length >0){
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Warning!</strong> @Model.errorMessage
+  <button type="button" class="btn-close" data-ds-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+}
+
+<br>
+<br>
+<br>
+
+<div class="text-center">
+    <h1>Login</h1>
+</div>
+
+<br>
+<center>
+    <div  class="d-flex flex-column justify-content-center align-items-center bg-white shadow-lg rounded p-5" style="width: fit-content;">
+
+        <form method="POST">
+            <div class="mb-3">
+                <input placeholder="User Name" type="text" name="userName" class="form-control" value="@Model.userInfo.userName"/>
+            </div>
+            <div class="mb-3">
+                <input placeholder="Password" type="password" name="password" class="form-control" name="password" value="@Model.userInfo.password"/>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+            <div class="text-center">
+                <p>Not a member? <a href="/Users/SignUp">Register</a></p>
+            </div>
+        </form>
+    </div>
+</center>

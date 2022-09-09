@@ -1,0 +1,7 @@
+@page
+
+@{
+     HttpContext.Session.Remove("userName");
+    HttpContext.Session.Remove("password");
+    Response.Redirect("/");
+}

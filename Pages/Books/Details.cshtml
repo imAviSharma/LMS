@@ -1,0 +1,66 @@
+@page
+@model Lib.Pages.Books.DetailsModel
+@{
+ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div class="text-center">
+  <img src="https://www.adazing.com/wp-content/uploads/2019/02/open-book-clipart-03-300x300.png" alt="Book"
+    class="img-thumbnail">
+</div>
+<h3>Description</h3>
+<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+    standard
+    dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+    specimen
+    book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+    unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and
+    more
+    recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Publisher</th>
+      <th>categories</th>
+      <th>Price</th>
+      <th>Assigned To</th>
+      @{
+        if(@Model.role == "admin"){
+          <th>Action</th>
+        }
+      }
+    </tr>
+  </thead>
+  <tbody>
+    @{
+    <tr>
+      <td>@Model.booksInfo.title</td>
+      <td>@Model.booksInfo.author</td>
+      <td>@Model.booksInfo.publisher</td>
+      <td>@Model.booksInfo.categories</td>
+      <td>@Model.booksInfo.prices₹</td>
+        @{
+          if( @Model.booksInfo.assignedTo == "NULL"){
+            <td>No One</td>
+          }else{
+            <td>@Model.booksInfo.assignedTo</td>
+          }
+
+        }
+      @{
+        if(@Model.role == "admin"){
+          <td>
+            <a class="btn btn-danger btn-sm" href="/Books/DeleteBook?id=@Model.booksInfo.id">Delete</a>
+          </td>
+        }
+      }
+    </tr>
+    }
+  </tbody>
+</table>

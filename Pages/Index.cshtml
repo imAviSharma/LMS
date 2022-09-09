@@ -1,0 +1,52 @@
+﻿@page
+@model IndexModel
+@{
+ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1>Welcome to Avi Library</h1>
+    <br>
+    <table class="table table-striped table-hover ">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>categories</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var book in Model.booksInfo)
+            {
+            <tr>
+                <td>@book.id</td>
+                @if(@book.assignedTo != "NULL")
+                {
+                <td>
+                    <a href="/Books/Details?id=@book.id">
+                        <del>
+                            @book.title
+                        </del>
+                    </a>
+                </td>
+                }else{
+                <td>
+                    <a href="/Books/Details?id=@book.id">
+                        @book.title
+                    </a>
+                </td>
+
+                }
+                <td>@book.author</td>
+                <td>@book.categories</td>
+
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<br>
+<br>
+<del>Means</del> :- Not Available

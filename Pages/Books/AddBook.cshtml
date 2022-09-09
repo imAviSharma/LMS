@@ -1,0 +1,45 @@
+@page
+@model Lib.Pages.Books.AddBookModel
+@{
+ViewData["Title"] = "Add Books";
+}
+<br>
+<br>
+<h2 class="text-center">Add New Books</h2>
+<br>
+<center>
+  <div class="d-flex flex-column justify-content-center align-items-center bg-white shadow-lg rounded p-5" style="width: fit-content;">
+    @if(Model.errorMessage.Length > 0){
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Warning!</strong> @Model.errorMessage
+        <button type="button" class="btn-close" data-ds-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    }
+    @if(Model.successMessage.Length > 0){
+      <div class="row mb-3">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Success!</strong> @Model.successMessage
+          <button type="button" class="btn-close" data-ds-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    }
+      <form method="POST">  
+            <input placeholder="Title" type="text" class="form-control" name="title" value="@Model.booksInfo.title" />
+            <br>
+            <input placeholder="Author" type="text" class="form-control" name="author" value="@Model.booksInfo.author" />
+            <br>
+            <input placeholder="Publisher" type="text" class="form-control" name="publisher" value="@Model.booksInfo.publisher" />
+            <br>
+            <input placeholder="Categories" type="text" class="form-control" name="categories" value="@Model.booksInfo.categories" />
+            <br>
+            <input type="number" class="form-control" name="Price" value="@Model.booksInfo.prices" />
+            <br>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <a class="btn btn-outline-primary" href="/Books/AddBook" role="button">Cancel</a>
+      </form>
+  </div>
+</center>

@@ -1,0 +1,11 @@
+CREATE TABLE Books (
+    BookId INT IDENTITY(101,1) PRIMARY KEY,
+    title VARCHAR(255) ,
+    author VARCHAR(255) ,
+    publisher VARCHAR(255) ,
+    categories VARCHAR(255) ,
+    prices INT,
+    assignendTo VARCHAR(255),
+    createdDate datetime DEFAULT(getdate()), 
+    updatedDate datetime DEFAULT(getdate()) 
+)

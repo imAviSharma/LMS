@@ -1,0 +1,51 @@
+@page
+@model Lib.Pages.Users.SignUp
+@using Microsoft.AspNetCore.Http
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+@if(Model.errorMessage.Length > 0){
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong>Warning!</strong> @Model.errorMessage
+  <button type="button" class="btn-close" data-ds-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+}
+
+@if(Model.successMessage.Length > 0){
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+   @Model.errorMessage
+  <button type="button" class="btn-close" data-ds-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+}
+
+<br>
+<br>
+<br>
+<div class="text-center">
+    <h1>Sign Up</h1>
+</div>
+<br>
+<center>
+  <div  class="d-flex flex-column justify-content-center align-items-center bg-white shadow-lg rounded p-5" style="width: fit-content;">
+      <form method="POST">
+          <div class="form-outline mb-3">
+              <input placeholder="User Name" type="text" name="userName" class="form-control" value="@Model.userInfo.userName"/>
+          </div>
+          <div class="form-outline mb-3">
+              <input placeholder="Password" type="password" class="form-control" name="password" value="@Model.userInfo.password"/>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block mb-4">Register</button>
+
+          <div class="text-center">
+              <p>registered user? <a href="/Users/Login">Login</a></p>
+          </div>
+      </form>
+  </div>
+</center>

@@ -1,0 +1,21 @@
+@page
+@using System.Data.SqlClient
+
+@{
+  try{
+    string id = Request.Query["id"];
+    string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=library;Integrated Security=True";
+    string sql = "DELETE FROM Books WHERE BookID = @id";
+    using (SqlConnection connection = new SqlConnection(connectionString))
+    {
+        SqlCommand command = new SqlCommand(sql, connection);
+        command.Parameters.AddWithValue("@id", id);
+        connection.Open();
+        command.ExecuteNonQuery();
+        connection.Close();
+    }
+  }catch (Exception ex){
+    Console.WriteLine(ex.ToString());
+  }
+  Response.Redirect("/");
+}
