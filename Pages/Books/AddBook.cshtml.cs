@@ -16,8 +16,9 @@ namespace Lib.Pages.Books{
       string author = Request.Form["author"];
       string publisher = Request.Form["publisher"];
       string categories = Request.Form["categories"];
-      string prices = Request.Form["prices"];
-      if (title.Length == 0 || author.Length == 0 || publisher.Length == 0 || categories.Length == 0 || prices.Length == 0){
+      int prices = Convert.ToInt32(Request.Form["prices"]);
+      Console.WriteLine(title + " " + author + " " + publisher + " " + categories + " " + prices);
+      if (title.Length == 0 || author.Length == 0 || publisher.Length == 0 || categories.Length == 0){
         errorMessage = "Please fill all the fields";
         return;
       }
