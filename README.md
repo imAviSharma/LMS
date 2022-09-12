@@ -1,4 +1,11 @@
-# libCoMakeIT
+# Library Management System 
+* Built with ASP.NET framework
+## How to run
+```bash
+  git clone https://github.com/imAviSharma/LMS.git
+  cd LMS
+  dotnet watch
+```
 ![Get Books](https://user-images.githubusercontent.com/110884088/189687607-25fcd58d-8554-4adf-8ae9-a85a0997e76f.png)
 ![Return Books](https://user-images.githubusercontent.com/110884088/189687617-ed89b224-a89c-46fa-8e9a-8f8dee242958.png)
 ![Dashboard](https://user-images.githubusercontent.com/110884088/189687622-6790a0e4-8c92-4085-a886-e4a9e832b309.png)
