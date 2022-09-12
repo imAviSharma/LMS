@@ -12,7 +12,7 @@ namespace Lib.Pages.Books{
       string id = Request.Query["id"];
       try{
         role = HttpContext.Session.GetString("role");
-        string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=library;Integrated Security=True";
+        string connectionString = "Server=tcp:libcomakeit.database.windows.net,1433;Initial Catalog=libcmit;Persist Security Info=False;User ID=avi;Password=Earth@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         using( SqlConnection conn = new SqlConnection(connectionString)){
           conn.Open();
           string sql = "SELECT * FROM books WHERE BookID = @id";

@@ -14,7 +14,7 @@ namespace Lib.Pages.Users {
             userInfo.userName = Request.Form["userName"];
             userInfo.password = Request.Form["password"];
             try{
-                string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=library;Integrated Security=True";
+                string connectionString = "Server=tcp:libcomakeit.database.windows.net,1433;Initial Catalog=libcmit;Persist Security Info=False;User ID=avi;Password=Earth@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 using (SqlConnection conn = new SqlConnection(connectionString)){
                 conn.Open();
                 string query = "INSERT INTO users (userName, password, roles) VALUES (@userName, @password, @role)";

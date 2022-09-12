@@ -22,8 +22,9 @@ namespace Lib.Pages.Books{
         errorMessage = "Please fill all the fields";
         return;
       }
-      try{
-        string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=library;Integrated Security=True";
+      try{  
+    
+        string connectionString = "Server=tcp:libcomakeit.database.windows.net,1433;Initial Catalog=libcmit;Persist Security Info=False;User ID=avi;Password=Earth@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         using (SqlConnection conn = new SqlConnection(connectionString)){
           conn.Open();
           string query = "INSERT INTO Books (title, author, publisher, categories, prices, assignendTo) VALUES (@title, @author, @publisher, @categories, @prices, 'NULL')";

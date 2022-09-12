@@ -18,7 +18,7 @@ namespace Lib.Pages{
 
         public void OnGet(){
             try{
-                string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=library;Integrated Security=True";
+                string connectionString = "Server=tcp:libcomakeit.database.windows.net,1433;Initial Catalog=libcmit;Persist Security Info=False;User ID=avi;Password=Earth@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 // string connectionString = "server=localhost;Database=library; Trusted_Connection=True";
                 using (SqlConnection conn = new SqlConnection(connectionString)){
                     conn.Open();
