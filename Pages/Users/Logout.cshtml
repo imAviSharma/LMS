@@ -1,7 +1,16 @@
 @page
 
 @{
-     HttpContext.Session.Remove("userName");
-    HttpContext.Session.Remove("password");
-    Response.Redirect("/");
+    string userName = HttpContext.Session.GetString("userName");
+    string role = HttpContext.Session.GetString("role");
+    if (!string.IsNullOrEmpty(userName))
+    {
+        HttpContext.Session.Remove("userName");
+        HttpContext.Session.Remove("password");
+        Response.Redirect("/");
+    }
+    else
+    {
+        <h2 class="text-center">Don't have permission to access this resource</h2>
+    }
 }

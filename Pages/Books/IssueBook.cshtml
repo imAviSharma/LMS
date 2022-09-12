@@ -1,43 +1,57 @@
 @page
 @model Lib.Pages.Books.IssueBookModel
 @{
-ViewData["Title"] = "Get  Book";
+  ViewData["Title"] = "Get Book";
 }
 @using Microsoft.AspNetCore.Http
 
-@if(Model.errorMessage.Length > 0){
-<div class="alert alert-warning alert-dismissible fade show" role="alert">
-  <strong>Warning!</strong> @Model.errorMessage
-  <button type="button" class="btn-close" data-ds-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+@{
+  string userName = HttpContext.Session.GetString("userName");
+  string role = HttpContext.Session.GetString("role");
+  if (!string.IsNullOrEmpty(userName))
+  {
+    @if (Model.errorMessage.Length > 0)
+    {
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>Warning!</strong> @Model.errorMessage
+        <button type="button" class="btn-close" data-ds-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    }
+
+    @if (Model.successMessage.Length > 0)
+    {
+      <div class="row mb-3">
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Success!</strong> @Model.successMessage
+          <button type="button" class="btn-close" data-ds-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    }
+
+    <br>
+    <br>
+    <br>
+    <h1 class="text-center">GET BOOK</h1>
+    <br>
+
+    <center>
+      <div class="d-flex flex-column justify-content-center align-items-center bg-white shadow-lg rounded p-5"
+      style="width: fit-content;">
+
+        <form method="POST">
+          <input placeholder="Book ID" type="number" class="form-control" name="id" value="@Model.booksInfo.id" />
+          <br>
+          <button type="submit" class="btn btn-primary">Get Book</button>
+        </form>
+      </div>
+    </center>
+  }
+  else
+  {
+    <h2 class="text-center">Don't have permission to access this resource</h2>
+  }
 }
-
-@if(Model.successMessage.Length > 0){
-<div class="row mb-3">
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success!</strong> @Model.successMessage
-    <button type="button" class="btn-close" data-ds-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-</div>
-}
-
-<br>
-<br>
-<br>
-  <h1 class="text-center">GET BOOK</h1>
-<br>
-
-<center>
-<div  class="d-flex flex-column justify-content-center align-items-center bg-white shadow-lg rounded p-5" style="width: fit-content;">
-
-    <form method="POST">
-      <input placeholder="Book ID" type="number" class="form-control" name="id" value="@Model.booksInfo.id" />
-      <br>
-      <button type="submit" class="btn btn-primary">Get Book</button>
-    </form>
-</div>
-</center>

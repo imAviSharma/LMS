@@ -2,20 +2,28 @@
 @using System.Data.SqlClient
 
 @{
-  try{
-    string id = Request.Query["id"];
-    string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=library;Integrated Security=True";
-    string sql = "UPDATE Books SET assignendTo = 'NULL' WHERE BookID = @id";
-    using (SqlConnection connection = new SqlConnection(connectionString))
-    {
-        SqlCommand command = new SqlCommand(sql, connection);
-        command.Parameters.AddWithValue("@id", id);
-        connection.Open();
-        command.ExecuteNonQuery();
-        connection.Close();
+  string userName = HttpContext.Session.GetString("userName");
+  string role = HttpContext.Session.GetString("role");
+  if (!string.IsNullOrEmpty(userName)){
+    try{
+      string id = Request.Query["id"];
+      string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=library;Integrated Security=True";
+      string sql = "UPDATE Books SET assignendTo = 'NULL' WHERE BookID = @id";
+      using (SqlConnection connection = new SqlConnection(connectionString))
+      {
+          SqlCommand command = new SqlCommand(sql, connection);
+          command.Parameters.AddWithValue("@id", id);
+          connection.Open();
+          command.ExecuteNonQuery();
+          connection.Close();
+      }
+    }catch (Exception ex){
+      Console.WriteLine(ex.ToString());
     }
-  }catch (Exception ex){
-    Console.WriteLine(ex.ToString());
-  }
-  Response.Redirect("/Books/ReturnBook");
+    Response.Redirect("/Books/ReturnBook");
+    }
+    else
+    {
+      <h2 class="text-center">Don't have permission to access this resource</h2>
+    }
 }
